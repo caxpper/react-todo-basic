@@ -20,12 +20,20 @@ class App extends Component{
         });
     }
 
+    deleteItem(index){
+        const newList = [...this.state.list];
+        newList.splice(index,1);
+        this.setState({
+            list: newList
+        });
+    }
+
     render(){
         return (
             <div className='container'>
                 <h1 className='center'>To Do List</h1>
                 <AddForm add={this.addItem.bind(this)} />
-                <List listData={this.state.list} />
+                <List listData={this.state.list} delete={this.deleteItem.bind(this)} />
             </div>
         )
     }
